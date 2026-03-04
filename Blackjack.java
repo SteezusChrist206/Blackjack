@@ -52,7 +52,16 @@ public class Blackjack {
 
         System.out.println("Deine ersten zwei Karten sind: " + spielerkarten.get(0) + ", " + spielerkarten.get(1));
         System.out.println("Dealers erste Karten sind: " + dealerkarten.get(0) + ", " + dealerkarten.get(1));
-
+        if (spielerkartentotal == 9 || spielerkartentotal==10||spielerkartentotal==11) {
+            System.out.println("Möchtest du deinen Einsatz verdoppeln? (j/n)");
+            String doppel = scanner.next();
+            if(doppel.equals("j")){
+                Einsatz *=2;
+                System.out.println("Dein Einsatz beträgt nun " + Einsatz);
+            } else if (doppel.equals("n")){
+                System.out.println("ok, dein Einsatz bleibt bei " + Einsatz);
+            }
+        }
         if (spielerkartentotal == 21 && dealerkartentotal != 21){
             System.out.println("Du hast einen Blackjack. Glückwunsch!");
             kontostand += Einsatz;
@@ -103,7 +112,7 @@ public class Blackjack {
                     }
 
                 }
-                else {
+                else if (weiter.equals("n")){
                     if (dealerkartentotal<17){
                         for (int i = dealerkartentotal; i<17;) {
                             dealerkarten.add(randomkarte());
