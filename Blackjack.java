@@ -79,11 +79,18 @@ public class Blackjack {
                         dealerkartentotal += dealerkarten.get(round);
                     }
                     if (spielerkartentotal==21){
-                        System.out.println("Balckjack, du gewinnst!!!");
+                        System.out.println("Blackjack, du gewinnst!!!");
                         kontostand += Einsatz;
                         System.out.println("Dein Kontostand beträgt: " + kontostand);
                         break;
-                    } else if (spielerkartentotal>21) {
+                    }
+                    else if(dealerkartentotal==21){
+                        System.out.println("Dealer hat Blackjack. Du verlierst!!!");
+                        kontostand -= Einsatz;
+                        System.out.println("Dein Kontostand ist: " + kontostand);
+                        break;
+                    }
+                    else if (spielerkartentotal>21) {
                         System.out.println("Du hast 21 überschritten. Du verlierst!!!");
                         kontostand-= Einsatz;
                         System.out.println("Dein Kontostand beträgt: " + kontostand);
