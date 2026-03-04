@@ -124,29 +124,28 @@ public class Blackjack {
                             dealerkartentotal += dealerkarten.get(round);
                             i += dealerkarten.get(round);
                             if (dealerkartentotal>21){
-                                System.out.println("Du gewinnst!!!");
-                                kontostand+= Einsatz;
-                                System.out.println("Dein Kontostand beträgt: " + kontostand);
+                                break;
                             }
                         }
                     }
                     System.out.println("Deine Endsumme ist: " + spielerkartentotal);
                     System.out.println("Dealers Endsumme ist: " + dealerkartentotal);
-                    if (spielerkartentotal>dealerkartentotal) {
+                    if (spielerkartentotal>dealerkartentotal && spielerkartentotal<=21) {
                         System.out.println("Du gewinnst!!");
                         kontostand += Einsatz;
                         System.out.println("Dein Kontostand beträgt: " + kontostand);
-                        break;
                     }
                     else if (spielerkartentotal==dealerkartentotal){
                         System.out.println("Gleichstand, versuch es nochmal. Du erhälst dein Einsatz zurück");
                         System.out.println("Dein Kontostand begrägt: " + kontostand);
-                        break;
+                    } else if (dealerkartentotal>21) {
+                        System.out.println("Du gewinnst!!");
+                        kontostand += Einsatz;
+                        System.out.println("Dein Kontostand beträgt: " + kontostand);
                     } else{
                         System.out.println("Du verlierst!!!");
                         kontostand -= Einsatz;
                         System.out.println("Dein Kontostand beträgt: " + kontostand);
-                        break;
                     }
                 }
             }
