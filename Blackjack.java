@@ -55,10 +55,14 @@ public class Blackjack {
         if (spielerkartentotal == 9 || spielerkartentotal==10||spielerkartentotal==11) {
             System.out.println("Möchtest du deinen Einsatz verdoppeln? (j/n)");
             String doppel = scanner.next();
-            if(doppel.equals("j")){
+            if(doppel.equals("j") && Einsatz*2 <= kontostand){
                 Einsatz *=2;
                 System.out.println("Dein Einsatz beträgt nun " + Einsatz);
-            } else if (doppel.equals("n")){
+            }else if (Einsatz*2 > kontostand){
+                System.out.println("Nicht genug Geld!!!");
+                System.out.println("Dein Einsatz bleibt bei " + Einsatz);
+            }
+            else if (doppel.equals("n")){
                 System.out.println("ok, dein Einsatz bleibt bei " + Einsatz);
             }
         }
