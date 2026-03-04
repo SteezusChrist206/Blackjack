@@ -1,6 +1,6 @@
 package Blackjack;
 
-import java.sql.Array;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -15,11 +15,21 @@ public class Blackjack {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Bestimme deinen Einsatz und starte eine Runde: ");
         int Einsatz = scanner.nextInt();
+        boolean gueltigerEinsatz = false;
+        while(!gueltigerEinsatz) {
+            if (Einsatz > kontostand && Einsatz < 0) {
+                System.out.println("Ungültiger Einsatz ");
+                System.out.println("Bestimme deinen Einsatz und starte eine Runde: ");
+                Einsatz = scanner.nextInt();
+            } else {
+                gueltigerEinsatz = true;
+            }
+        }
         System.out.println("Karten werden gedealt... bitte warten");
         sleep(3000);
 
-        ArrayList<Integer> spielerkarten = new ArrayList<Integer>();
-        ArrayList<Integer> dealerkarten = new ArrayList<Integer>();
+        ArrayList<Integer> spielerkarten = new ArrayList<>();
+        ArrayList<Integer> dealerkarten = new ArrayList<>();
         spielerkarten.add(randomkarte());
         spielerkarten.add(randomkarte());
         dealerkarten.add(randomkarte());
@@ -28,7 +38,7 @@ public class Blackjack {
         int spielerkartentotal = spielerkarten.get(0) + spielerkarten.get(1);
         int dealerkartentotal = dealerkarten.get(0) + dealerkarten.get(1);
 
-        while (spielerkartentotal == 22 || dealerkartentotal ==22){
+        while (spielerkarten.get(0) + spielerkarten.get(1) == 22 || dealerkarten.get(0) + dealerkarten.get(1) ==22){
             if (spielerkartentotal==22) {
                 spielerkarten.set(0, randomkarte());
                 spielerkarten.set(1, randomkarte());
@@ -72,14 +82,17 @@ public class Blackjack {
                         System.out.println("Balckjack, du gewinnst!!!");
                         kontostand += Einsatz;
                         System.out.println("Dein Kontostand beträgt: " + kontostand);
+                        break;
                     } else if (spielerkartentotal>21) {
                         System.out.println("Du hast 21 überschritten. Du verlierst!!!");
                         kontostand-= Einsatz;
                         System.out.println("Dein Kontostand beträgt: " + kontostand);
+                        break;
                     } if (dealerkartentotal>21){
                         System.out.println("Du gewinnst!!!");
                         kontostand += Einsatz;
                         System.out.println("Dein Kontostand beträgt: " + kontostand);
+                        break;
                     }
 
                 }
