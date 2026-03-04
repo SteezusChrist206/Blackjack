@@ -9,7 +9,7 @@ import static java.lang.Thread.sleep;
 
 public class Blackjack {
 
-    public static int kontostand = 500;
+    public static int kontostand = 10;
 
     public static void runde() throws InterruptedException {
         Scanner scanner = new Scanner(System.in);
@@ -134,18 +134,22 @@ public class Blackjack {
                         System.out.println("Du gewinnst!!");
                         kontostand += Einsatz;
                         System.out.println("Dein Kontostand beträgt: " + kontostand);
+                        break;
                     }
                     else if (spielerkartentotal==dealerkartentotal){
                         System.out.println("Gleichstand, versuch es nochmal. Du erhälst dein Einsatz zurück");
                         System.out.println("Dein Kontostand begrägt: " + kontostand);
+                        break;
                     } else if (dealerkartentotal>21) {
                         System.out.println("Du gewinnst!!");
                         kontostand += Einsatz;
                         System.out.println("Dein Kontostand beträgt: " + kontostand);
+                        break;
                     } else{
                         System.out.println("Du verlierst!!!");
                         kontostand -= Einsatz;
                         System.out.println("Dein Kontostand beträgt: " + kontostand);
+                        break;
                     }
                 }
             }
