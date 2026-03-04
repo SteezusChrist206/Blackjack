@@ -17,7 +17,7 @@ public class Blackjack {
         int Einsatz = scanner.nextInt();
         boolean gueltigerEinsatz = false;
         while(!gueltigerEinsatz) {
-            if (Einsatz > kontostand && Einsatz < 0) {
+            if (Einsatz > kontostand || Einsatz < 0) {
                 System.out.println("Ungültiger Einsatz ");
                 System.out.println("Bestimme deinen Einsatz und starte eine Runde: ");
                 Einsatz = scanner.nextInt();
